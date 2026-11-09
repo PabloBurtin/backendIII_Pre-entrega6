@@ -1,0 +1,135 @@
+export const PRODUCT_STATUS = Object.freeze({
+    AVAILABLE: "AVAILABLE",
+    OUT_OF_STOCK: "OUT_OF_STOCK"
+});
+
+export const USER_ROLES = Object.freeze({
+    ADMIN: "ADMIN",
+    USER: "USER",
+    COURIER: "COURIER"
+});
+
+export const ORDER_STATUS = Object.freeze({
+    CREATED: "CREATED",
+    ASSIGNED: 'ASSIGNED',
+    PICKED_UP: "PICKED_UP",
+    IN_TRANSIT: "IN_TRANSIT",
+    DELIVERED: "DELIVERED",
+    CANCELLED: "CANCELLED"
+});
+
+export const ORDER_PRIORITY = Object.freeze({
+    LOW: "LOW",
+    NORMAL: "NORMAL",
+    HIGH: "HIGH"
+});
+
+export const DELIVERY_STATUS = Object.freeze({
+    PENDING: "PENDING",
+    ASSIGNED: "ASSIGNED",
+    IN_TRANSIT: "IN_TRANSIT",
+    DELIVERED: "DELIVERED"
+});
+
+export const DELIVERY_STATUS_BY_ORDER_STATUS = Object.freeze({
+    [ORDER_STATUS.CREATED]: DELIVERY_STATUS.PENDING,
+    [ORDER_STATUS.ASSIGNED]: DELIVERY_STATUS.ASSIGNED,
+    [ORDER_STATUS.PICKED_UP]: DELIVERY_STATUS.ASSIGNED,
+    [ORDER_STATUS.IN_TRANSIT]: DELIVERY_STATUS.IN_TRANSIT,
+    [ORDER_STATUS.DELIVERED]: DELIVERY_STATUS.DELIVERED
+});
+
+export const MOCKING_PARAMETERS = Object.freeze({
+    DEFAULT_QTY: 10,
+    MIN_QTY: 1,
+    MAX_QTY: 100,
+    ORDERS_PER_COURIER: 3,
+    DEFAULT_PASSWORD: "Mock1234",
+    EMAIL_DOMAIN: "test.com"
+});
+
+export const RESPONSE_STATUS = Object.freeze({
+    SUCCESS: "success",
+    ERROR: "error"
+});
+
+export const ENVIRONMENTS = Object.freeze({
+    DEVELOPMENT: "development",
+    PRODUCTION: "production",
+    TEST: "test"
+});
+
+export const LOG_LEVELS = Object.freeze({
+    FATAL: "fatal",
+    ERROR: "error",
+    WARNING: "warning",
+    INFO: "info",
+    HTTP: "http",
+    DEBUG: "debug"
+});
+
+export const LOG_LEVEL_PRIORITIES = Object.freeze({
+    [LOG_LEVELS.FATAL]: 0,
+    [LOG_LEVELS.ERROR]: 1,
+    [LOG_LEVELS.WARNING]: 2,
+    [LOG_LEVELS.INFO]: 3,
+    [LOG_LEVELS.HTTP]: 4,
+    [LOG_LEVELS.DEBUG]: 5
+});
+
+export const LOG_COLORS = Object.freeze({
+    [LOG_LEVELS.FATAL]: "magenta",
+    [LOG_LEVELS.ERROR]: "red",
+    [LOG_LEVELS.WARNING]: "yellow",
+    [LOG_LEVELS.INFO]: "green",
+    [LOG_LEVELS.HTTP]: "cyan",
+    [LOG_LEVELS.DEBUG]: "blue"
+});
+
+export const LOG_LEVEL_BY_ENVIRONMENT = Object.freeze({
+    [ENVIRONMENTS.DEVELOPMENT]: LOG_LEVELS.DEBUG,
+    [ENVIRONMENTS.PRODUCTION]: LOG_LEVELS.INFO,
+    [ENVIRONMENTS.TEST]: LOG_LEVELS.WARNING
+});
+
+export const LOG_FILE_PARAMETERS = Object.freeze({
+    DIRECTORY: "logs",
+    DATE_PATTERN: "YYYY-MM-DD",
+    MAX_SIZE: "20m",
+    MAX_FILES: "14d",
+    FLUSH_TIMEOUT_MS: 500
+});
+
+export const COLLECTIONS = Object.freeze({
+    USERS: "usuarios",
+    ORDERS: "pedidos",
+    DELIVERIES: "entregas"
+});
+
+export const REQUEST_ID = Object.freeze({
+    HEADER: "x-request-id",
+    VALID_FORMAT: /^[\w-]{1,64}$/
+});
+
+export const ORDER_STATUS_TRANSITIONS = Object.freeze({
+    [ORDER_STATUS.CREATED]: [ORDER_STATUS.ASSIGNED, ORDER_STATUS.CANCELLED],
+    [ORDER_STATUS.ASSIGNED]: [ORDER_STATUS.PICKED_UP, ORDER_STATUS.CANCELLED],
+    [ORDER_STATUS.PICKED_UP]: [ORDER_STATUS.IN_TRANSIT, ORDER_STATUS.CANCELLED],
+    [ORDER_STATUS.IN_TRANSIT]: [ORDER_STATUS.DELIVERED],
+    [ORDER_STATUS.DELIVERED]: [],
+    [ORDER_STATUS.CANCELLED]: []
+});
+
+export const DELIVERY_STATUS_TRANSITIONS = Object.freeze({
+    [DELIVERY_STATUS.PENDING]: [DELIVERY_STATUS.ASSIGNED],
+    [DELIVERY_STATUS.ASSIGNED]: [DELIVERY_STATUS.IN_TRANSIT],
+    [DELIVERY_STATUS.IN_TRANSIT]: [DELIVERY_STATUS.DELIVERED],
+    [DELIVERY_STATUS.DELIVERED]: []
+});
+
+export const ORDER_STATUS_BY_DELIVERY_STATUS = Object.freeze({
+    [DELIVERY_STATUS.PENDING]: ORDER_STATUS.CREATED,
+    [DELIVERY_STATUS.ASSIGNED]: ORDER_STATUS.ASSIGNED,
+    [DELIVERY_STATUS.IN_TRANSIT]: ORDER_STATUS.IN_TRANSIT,
+    [DELIVERY_STATUS.DELIVERED]: ORDER_STATUS.DELIVERED
+});

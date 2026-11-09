@@ -1,0 +1,41 @@
+export const ERROR_CODES = Object.freeze({
+    USER_NOT_FOUND: "USER_NOT_FOUND",
+    PRODUCT_NOT_FOUND: "PRODUCT_NOT_FOUND",
+    ORDER_NOT_FOUND: "ORDER_NOT_FOUND",
+    EMAIL_REQUIRED: "EMAIL_REQUIRED",
+    EMAIL_ALREADY_EXISTS: "EMAIL_ALREADY_EXISTS",
+    INVALID_PASSWORD: "INVALID_PASSWORD",
+    INVALID_STATUS: "INVALID_STATUS",
+    INVALID_QUANTITY: "INVALID_QUANTITY",
+    INVALID_ID: "INVALID_ID",
+    VALIDATION_ERROR: "VALIDATION_ERROR",
+    INVALID_JSON: "INVALID_JSON",
+    MOCK_SEED_FAILED: "MOCK_SEED_FAILED",
+    ROUTE_NOT_FOUND: "ROUTE_NOT_FOUND",
+    INTERNAL_ERROR: "INTERNAL_ERROR",
+    DELIVERY_ALREADY_EXISTS: "DELIVERY_ALREADY_EXISTS",
+    NO_COURIERS_AVAILABLE: "NO_COURIERS_AVAILABLE",
+    DELIVERY_NOT_FOUND: "DELIVERY_NOT_FOUND",
+    INVALID_COURIER: "INVALID_COURIER"
+});
+
+export const ERROR_DICTIONARY = Object.freeze({
+    [ERROR_CODES.USER_NOT_FOUND]: { statusCode: 404, message: "Usuario no encontrado" },
+    [ERROR_CODES.PRODUCT_NOT_FOUND]: { statusCode: 404, message: "Producto no encontrado" },
+    [ERROR_CODES.ORDER_NOT_FOUND]: { statusCode: 404, message: "Pedido no encontrado" },
+    [ERROR_CODES.EMAIL_REQUIRED]: { statusCode: 400, message: "El email es obligatorio" },
+    [ERROR_CODES.EMAIL_ALREADY_EXISTS]: { statusCode: 409, message: "Ya existe un usuario con ese email" },
+    [ERROR_CODES.INVALID_PASSWORD]: { statusCode: 400, message: "La contraseña no cumple los requisitos" },
+    [ERROR_CODES.INVALID_STATUS]: { statusCode: 400, message: "Estado inválido" },
+    [ERROR_CODES.INVALID_QUANTITY]: { statusCode: 400, message: "Cantidad inválida" },
+    [ERROR_CODES.INVALID_ID]: { statusCode: 400, message: "El identificador no tiene un formato válido" },
+    [ERROR_CODES.VALIDATION_ERROR]: { statusCode: 400, message: "Los datos enviados no son válidos" },
+    [ERROR_CODES.INVALID_JSON]: { statusCode: 400, message: "El cuerpo de la petición no es un JSON válido" },
+    [ERROR_CODES.MOCK_SEED_FAILED]: { statusCode: 500, message: "No se pudieron guardar los datos de prueba" },
+    [ERROR_CODES.ROUTE_NOT_FOUND]: { statusCode: 404, message: "Ruta no encontrada" },
+    [ERROR_CODES.INTERNAL_ERROR]: { statusCode: 500, message: "Error interno del servidor" },
+    [ERROR_CODES.DELIVERY_ALREADY_EXISTS]: { statusCode: 409, message: "El pedido ya tiene una entrega asociada" },
+    [ERROR_CODES.NO_COURIERS_AVAILABLE]: { statusCode: 409, message: "No hay repartidores disponibles para asignar la entrega" },
+    [ERROR_CODES.DELIVERY_NOT_FOUND]: { statusCode: 404, message: "Entrega no encontrada" },
+    [ERROR_CODES.INVALID_COURIER]: { statusCode: 400, message: "El usuario indicado no es un repartidor" }
+});
